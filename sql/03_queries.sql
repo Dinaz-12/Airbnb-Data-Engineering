@@ -1,91 +1,80 @@
--- Query 1
+#Query 1 - Total Listings
 SELECT COUNT(*) AS total_listings
-FROM fact_listings;
+FROM listings;
 
 
--- Query 2
+# Query 2 - Average Price
 SELECT
-room_type,
-COUNT(*) AS total_listings
-FROM fact_listings
-GROUP BY room_type
-ORDER BY total_listings DESC;
-
-
--- Query 3
-SELECT
-room_type,
 ROUND(AVG(price),2) AS average_price
-FROM fact_listings
+FROM listings;
+
+
+# Query 3 - Average Price by Room Type
+SELECT
+room_type,
+COUNT(*) AS total_listings,
+ROUND(AVG(price),2) AS average_price
+FROM listings
 GROUP BY room_type
 ORDER BY average_price DESC;
 
 
--- Query 4
+# Query 4 - Property Types
 SELECT
 property_type,
 COUNT(*) AS total
-FROM fact_listings
+FROM listings
 GROUP BY property_type
 ORDER BY total DESC;
 
--- Query 5
+# Query 5 - Top 10 Expensive Listings
 SELECT
-listing_name,
+name,
 price
-FROM fact_listings
+FROM listings
 ORDER BY price DESC
 LIMIT 10;
 
--- Query 6
+
+# Query 6 - Top Hosts
 SELECT
-dh.host_name,
-COUNT(*) AS listings
-FROM fact_listings f
-JOIN dim_host dh
-ON f.host_key = dh.host_key
-GROUP BY dh.host_name
-ORDER BY listings DESC
+host_name,
+host_listings_count
+FROM listings
+ORDER BY host_listings_count DESC
 LIMIT 10;
 
 
--- Query 7
+# Query 7 - Neighbourhood Analysis
 SELECT
-dl.neighbourhood,
-ROUND(AVG(f.price),2) AS avg_price
-FROM fact_listings f
-JOIN dim_location dl
-ON f.location_key = dl.location_key
-GROUP BY dl.neighbourhood
-ORDER BY avg_price DESC
-LIMIT 10;
+neighbourhood_cleansed,
+COUNT(*) AS listings,
+ROUND(AVG(price),2) AS average_price
+FROM listings
+GROUP BY neighbourhood_cleansed
+ORDER BY average_price DESC;
 
 
--- Query 8
+# Query 8 - Superhost Analysis
 SELECT
-dh.is_superhost,
-ROUND(AVG(f.price),2) AS avg_price
-FROM fact_listings f
-JOIN dim_host dh
-ON f.host_key = dh.host_key
-GROUP BY dh.is_superhost;
+host_is_superhost,
+COUNT(*) AS total_hosts,
+ROUND(AVG(price),2) AS average_price
+FROM listings
+GROUP BY host_is_superhost;
 
 
--- Query 9
+# Query 9 - Review Analysis
 SELECT
-review_scores_rating,
-COUNT(*)
-FROM fact_listings
-GROUP BY review_scores_rating
-ORDER BY review_scores_rating DESC;
+ROUND(AVG(review_scores_rating),2) AS average_rating,
+ROUND(AVG(number_of_reviews),2) AS average_reviews
+FROM listings;
 
 
--- Query 10
+# Query 10 - Occupancy Analysis
 SELECT
-listing_name,
-price * availability_365 AS estimated_revenue
-FROM fact_listings
-ORDER BY estimated_revenue DESC
-LIMIT 10;
+ROUND(AVG(occupancy_rate),2) AS average_occupancy_rate,
+ROUND(AVG(estimated_revenue_l365d),2) AS average_estimated_revenue
+FROM listings;
 
 
