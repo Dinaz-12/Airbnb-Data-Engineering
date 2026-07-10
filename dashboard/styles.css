@@ -1,0 +1,38 @@
+/* Background */
+
+.stApp{
+    background-color:#071B34;
+}
+
+/* Sidebar */
+
+section[data-testid="stSidebar"]{
+    background:#08172D;
+}
+
+/* Metric Cards */
+
+div[data-testid="stMetric"]{
+    background:#0F2A52;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #1E88E5;
+}
+
+/* Metric Label */
+
+div[data-testid="stMetricLabel"]{
+    color:white;
+}
+
+/* Metric Value */
+
+div[data-testid="stMetricValue"]{
+    color:white;
+}
+
+/* Headers */
+
+h1,h2,h3{
+    color:white;
+}
