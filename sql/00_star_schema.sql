@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS fact_listings;
+DROP TABLE IF EXISTS dim_review;
+DROP TABLE IF EXISTS dim_location;
+DROP TABLE IF EXISTS dim_host;
+
 CREATE TABLE dim_host (
     host_id BIGINT PRIMARY KEY,
     host_name VARCHAR,
