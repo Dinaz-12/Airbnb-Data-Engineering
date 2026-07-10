@@ -36,3 +36,96 @@ div[data-testid="stMetricValue"]{
 h1,h2,h3{
     color:white;
 }
+
+[data-testid="stSidebar"] img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Sidebar logo */
+
+[data-testid="stSidebar"] img{
+
+    display:block;
+
+    margin:auto;
+
+    border-radius:18px;
+}
+
+
+/* Sidebar padding */
+
+[data-testid="stSidebar"]{
+
+    padding-top:20px;
+}
+
+/* ========*/
+
+/* Sidebar Navigation */
+
+div[role="radiogroup"]{
+    gap:10px;
+}
+
+/* Hide radio circles */
+
+div[role="radiogroup"] input{
+    display:none;
+}
+
+/* Menu Item */
+
+div[role="radiogroup"] label{
+
+    width:100%;
+
+    min-height:48px;
+
+    border-radius:10px;
+
+    border:1px solid #214d7d;
+
+    background:#17345f;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-left:18px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    color:white;
+
+    transition:.25s;
+}
+
+/* Hover */
+
+div[role="radiogroup"] label:hover{
+
+    background:#204a7c;
+
+    border-color:#2f86ff;
+
+}
+
+/* Selected */
+
+div[role="radiogroup"] label[data-selected="true"]{
+
+    background:#1d63d8;
+
+    border-color:#43a0ff;
+
+    color:white;
+
+    box-shadow:none;
+
+}
+

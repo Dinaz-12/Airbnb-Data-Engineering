@@ -149,3 +149,135 @@ def singapore_map(df):
 
     return fig
 
+#Average Price by Room Type
+def avg_price_roomtype(df):
+    import plotly.express as px
+
+    temp = (
+        df.groupby("room_type")["price"]
+        .mean()
+        .reset_index()
+    )
+
+    fig = px.bar(
+        temp,
+        x="room_type",
+        y="price",
+        color="price",
+        title="Average Price by Room Type",
+        color_continuous_scale="Blues"
+    )
+
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0F2A52",
+        plot_bgcolor="#0F2A52",
+        font_color="white"
+    )
+
+    return fig
+
+#Professional Hosts
+def professional_hosts(df):
+
+    import plotly.express as px
+
+    temp = (
+        df["professional_host"]
+        .value_counts()
+        .reset_index()
+    )
+
+    temp.columns = [
+        "Professional Host",
+        "Listings"
+    ]
+
+    fig = px.pie(
+        temp,
+        names="Professional Host",
+        values="Listings",
+        title="Professional Hosts",
+        hole=0.45,
+        color="Professional Host",
+        color_discrete_sequence=[
+            "#00BFFF",   # Light Blue
+            "#1E3A8A"    # Dark Blue
+        ]
+    )
+
+    fig.update_traces(
+        textposition="inside",
+        textinfo="percent+label",
+        marker=dict(line=dict(color="#0B1F3A", width=2))
+    )
+
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0F2A52",
+        plot_bgcolor="#0F2A52",
+        font_color="white",
+        legend_title="Host Type"
+    )
+
+    return fig
+
+#Rating Distribution
+def rating_distribution(df):
+
+    import plotly.express as px
+
+    fig = px.histogram(
+        df,
+        x="review_scores_rating",
+        nbins=20,
+        title="Review Rating Distribution",
+        color_discrete_sequence=["#38BDF8"]
+    )
+
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0F2A52",
+        plot_bgcolor="#0F2A52",
+        font_color="white"
+    )
+
+    return fig
+
+#Average Revenue by Room Type
+def revenue_roomtype(df):
+
+    import plotly.express as px
+
+    temp = (
+        df.groupby("room_type")[
+            "estimated_revenue_l365d"
+        ]
+        .mean()
+        .reset_index()
+    )
+
+    fig = px.bar(
+        temp,
+        x="room_type",
+        y="estimated_revenue_l365d",
+        color="estimated_revenue_l365d",
+        title="Average Revenue by Room Type",
+        color_continuous_scale="Blues"
+    )
+
+    fig.update_traces(
+        marker_line_color="#00BFFF",
+        marker_line_width=1
+    )
+
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0F2A52",
+        plot_bgcolor="#0F2A52",
+        font_color="white",
+        xaxis_title="Room Type",
+        yaxis_title="Average Revenue ($)"
+    )
+
+    return fig
