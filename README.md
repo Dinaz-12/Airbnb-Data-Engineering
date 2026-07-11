@@ -28,6 +28,8 @@ The dashboard enables users to explore Singapore Airbnb listings, analyze pricin
 
 ![Architecture](dashboard/assets/architecture.png)
 
+---
+
 # 🚀 Features
 
 ### Data Engineering
@@ -262,6 +264,10 @@ The following tables were created:
 - dim_review
 
 A Star Schema was implemented for analytical querying.
+
+### Star Schema
+
+![Star Schema](dashboard/assets/star_schema.png)
 
 ---
 
