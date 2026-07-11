@@ -1,4 +1,3 @@
-from matplotlib.pyplot import title
 from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
