@@ -24,6 +24,10 @@ The dashboard enables users to explore Singapore Airbnb listings, analyze pricin
 
 ---
 
+## System Architecture
+
+![Architecture](dashboard/assets/architecture.png)
+
 # 🚀 Features
 
 ### Data Engineering
