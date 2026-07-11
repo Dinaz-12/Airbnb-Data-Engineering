@@ -1,3 +1,4 @@
+from matplotlib.pyplot import title
 from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
@@ -17,7 +18,10 @@ from reportlab.pdfbase import pdfmetrics
 
 from datetime import datetime
 import pandas as pd
+from reportlab.platypus import Image
+import os
 
+logo_path = os.path.join("dashboard", "assets", "logo.png")
 
 def create_pdf(df):
 
@@ -35,16 +39,28 @@ def create_pdf(df):
 
     story = []
 
+
     # ====================================================
     # COVER PAGE
     # ====================================================
 
-    story.append(
-        Paragraph(
-            "<font color='darkblue'><b>Airbnb Data Engineering Report</b></font>",
-            title
-        )
-    )
+    logo = Image(logo_path)
+
+    logo.drawHeight = 120
+    logo.drawWidth = 120
+
+    logo.hAlign = "CENTER"
+
+    story.append(logo)
+    story.append(Spacer(1, 20))
+
+    title = Paragraph("""
+    <font size=24 color='#0B5ED7'>
+    <b>Airbnb Data Engineering Project</b>
+    </font>
+    """, styles["Title"])
+
+    story.append(title)
 
     story.append(Spacer(1,25))
 
