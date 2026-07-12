@@ -4,6 +4,13 @@ An end-to-end **Data Engineering & Analytics** project built using **Python, Duc
 
 ---
 
+## 🌐 Live Demo
+
+**Streamlit Dashboard:**  
+https://singapore-airbnb-dashboard.streamlit.app/
+
+---
+
 # 📌 Project Overview
 
 This project was developed as part of the **Expernetic Data Engineer Internship Assessment**.
