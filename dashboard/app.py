@@ -7,6 +7,7 @@ from charts import singapore_map
 from charts import ( avg_price_roomtype, professional_hosts, rating_distribution, revenue_roomtype)
 from report import create_pdf
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 
@@ -28,6 +29,11 @@ st.set_page_config(
 logo = Image.open("dashboard/assets/logo.png")
 
 # -----------------------------
+# Set Timezone
+# -----------------------------
+now = datetime.now(ZoneInfo("Asia/Colombo"))
+
+#------------------------------
 # Load CSS
 # -----------------------------
 
@@ -85,14 +91,14 @@ with col3:
 
     <div style="font-size:14px;color:#9CCBFF;">📅 Today</div>
     <div style="font-size:18px;font-weight:bold;color:white;">
-        {datetime.now().strftime("%d %b %Y")}
+        {now.strftime("%d %b %Y")}
     </div>
 
     <hr style="border:0.5px solid #2EA8FF;">
 
     <div style="font-size:14px;color:#9CCBFF;">🕒 Time</div>
     <div style="font-size:18px;font-weight:bold;color:white;">
-        {datetime.now().strftime("%I:%M %p")}
+        {now.strftime("%I:%M %p")}
     </div>
 
     </div>
